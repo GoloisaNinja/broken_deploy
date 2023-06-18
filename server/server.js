@@ -10,6 +10,10 @@ app.get("/api/v1/blueberry", (req, res) => {
     res.status(200).send({message: "Shut up and give me food hooman!"});
 });
 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
+
 app.listen(port, () => {
     console.log(`Server is up on: ${port}`);
 });
